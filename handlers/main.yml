@@ -4,3 +4,4 @@
     state: restarted
     name: sentineld
     enabled: yes
+    daemon_reload: yes
