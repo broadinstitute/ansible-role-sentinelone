@@ -2,8 +2,27 @@
 - name: "Add the Broad Sentinelone yum repository."
   yum_repository:
     name: 3rdparty-dsp
-    baseurl: "{{ repo }}-$basearch"
+    baseurl: "{{ repo }}"
     description: "Broad Institute Third Party Packages - DSP - CentOS $releasever - $basearch"
     gpgcheck: no
     enabled: yes
     repo_gpgcheck: no
+
+- name: "Yum installing sentinelagent"
+  yum:
+    name: sentinelagent
+    state: present
+
+- name: Create logrotate entry for setinelone.log
+  template:
+    src: templates/etc_logrotate.d_setinelone.j2
+    dest: /etc/logrotate.d/sentinelagent
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Starting service sentinelagent"
+  systemd:
+    state: started
+    name: sentineld
+    enabled: yes

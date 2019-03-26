@@ -1,0 +1,9 @@
+/var/log/sentinelagent/*.log /var/log/sentinelagent/ui/*.log {
+  rotate 7
+  daily
+  compress
+  dateext
+  missingok
+  notifempty
+  size 100M
+}
