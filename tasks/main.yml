@@ -22,10 +22,10 @@
     mode: 0644
 
 - name: change sentinelone management to broad server
-  lineinfile:
+  replace:
     path: /etc/init.d/sentineld
-    regexp: '\bhttps:\/\/qa\.auto\.sentinelone\.local\b'
-    line: 'SENTINEL_MANAGEMENT=https://broadinstitute.sentinelone.net'
+    regexp: '\bSENTINEL_MANAGEMENT=https:\/\/qa\.auto\.sentinelone\.local\b'
+    replace: 'SENTINEL_MANAGEMENT=https://broadinstitute.sentinelone.net'
   notify:
   - restart sentinelagent
 
