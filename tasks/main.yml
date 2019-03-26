@@ -34,3 +34,9 @@
     state: started
     name: sentineld
     enabled: yes
+
+- name: "Starting daemon_reload"
+  systemd:
+    name: sentineld
+    daemon_reload: yes
+  run_once: true
