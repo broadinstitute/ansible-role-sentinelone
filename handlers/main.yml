@@ -1,0 +1,6 @@
+---
+- name: restart sentinelagent
+  systemd:
+    state: restarted
+    name: sentineld
+    enabled: yes

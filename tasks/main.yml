@@ -21,6 +21,14 @@
     group: root
     mode: 0644
 
+- name: change sentinelone management to broad server
+  lineinfile:
+    path: /etc/init.d/sentineld
+    regexp: '\bhttps:\/\/qa\.auto\.sentinelone\.local\b'
+    line: 'https://broadinstitute.sentinelone.net'
+  notify:
+  - restart sentinelagent
+
 - name: "Starting service sentinelagent"
   systemd:
     state: started
